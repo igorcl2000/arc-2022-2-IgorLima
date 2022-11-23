@@ -12,8 +12,8 @@ def client(hostname, port):
     print('Client socket name is {}'.format(sock.getsockname()))
 
     delay = 0.1  # atraso em segundos
-    text = 'This is another message'
-    data = text.encode('ascii')
+    message = input('Insira uma mensagem para o servidor:')
+    data = message.encode('ascii')
 
     while True:
         # O cliente envia os dados e fica aguardando a resposta.
@@ -36,9 +36,9 @@ def client(hostname, port):
             if delay > 2.0:
                 raise RuntimeError('I think the server is down') from exc
         else:
-            break   # Se a resposta é recebida, saímos do loop.
+            break  # Se a resposta é recebida, saímos do loop.
 
-    print('The server says {!r}'.format(data.decode('ascii')))
+    print('O servidor retorna: {}'.format(data.decode('ascii')))
 
 
 if __name__ == '__main__':
