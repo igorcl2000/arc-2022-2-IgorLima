@@ -9,6 +9,7 @@ def geocode(address):
     headers = {'User-Agent': user_agent}
     response = requests.get(base, params=parameters, headers=headers)
     reply = response.json()
+    print(reply[0]['lat'], reply[0]['lon'])
     print('Endereço buscado: {0}\n'.format(address))
     for i in range(len(reply)):
         print('\tResultado {0}:\n'.format(str(i + 1)))
@@ -18,5 +19,4 @@ def geocode(address):
 
 if __name__ == '__main__':
     address = 'Belarmino Vilela Junqueira, Ituiutaba, MG'
-    reply = geocode(address)
-
+    geocode(address)
